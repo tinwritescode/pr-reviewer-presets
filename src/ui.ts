@@ -9,6 +9,7 @@ import {
 } from "./domain";
 import type { GithubError, PullState, Result } from "./github";
 import { renderLine } from "./line";
+import { renderOpenInApp } from "./open-in-app";
 import { createSetupDialog } from "./setup-dialog";
 
 /** Everything the UI needs from the outside world. */
@@ -95,7 +96,7 @@ export function createApp(input: { root: ShadowRoot; pull: PullRef; ports: Ports
     getPresets: () => presets,
     onPresetsSaved: setPresets,
   });
-  root.append(h("style", {}, STYLES), content, dialog.element);
+  root.append(h("style", {}, STYLES), content, renderOpenInApp(pull), dialog.element);
 
   function setPresets(next: Preset[]) {
     presets = next;

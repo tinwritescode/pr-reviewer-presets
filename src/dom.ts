@@ -70,6 +70,10 @@ button.line:hover { background: var(--hover); }
 .failed { padding: 4px 8px 0; color: var(--attention); }
 .manage { display: block; margin-top: 4px; padding: 2px 8px; border: 0; background: none; color: var(--muted); }
 .manage:hover { color: var(--accent); }
+.app-link { display: inline-block; padding: 2px 8px; color: var(--muted); text-decoration: none; }
+.app-link:hover { color: var(--accent); }
+.app-offer { padding: 0 8px; color: var(--muted); }
+.app-offer a { color: var(--accent); }
 .card-wrap { position: fixed; width: 296px; padding-top: 4px; z-index: 100; }
 .card { border: 1px solid var(--border); border-radius: 8px; background: var(--surface); box-shadow: 0 8px 24px rgba(31, 35, 40, 0.16); overflow: hidden; }
 .card-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 12px; border-bottom: 1px solid var(--border); font-weight: 600; }

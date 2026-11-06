@@ -28,6 +28,10 @@ gh auth token | pbcopy
 
 That token carries every scope your CLI login has. For less access, create a classic token with the `repo` scope, or a fine-grained token with read and write access to pull requests.
 
+## Open in git-tree-compare
+
+Each pull request also gets an **Open in git-tree-compare** link, which needs version 0.7 or later of [the app](https://github.com/tinwritescode/git-tree-compare#install). Chrome cannot tell a page whether the app is installed, so when the page keeps focus for 1.5 seconds after the click, the extension offers the install link. It removes the offer if focus leaves later.
+
 ## Security
 
 The token is stored in `chrome.storage.local`, restricted to extension pages and the background worker, and is only sent to `api.github.com`. Content scripts running on github.com cannot read it.

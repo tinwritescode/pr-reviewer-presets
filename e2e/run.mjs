@@ -91,6 +91,21 @@ async function checkPrFlow({ page, worker, url, posts }) {
 
   await page.reload({ waitUntil: "domcontentloaded" });
   await page.getByRole("button", { name: /Ask for/ }).waitFor({ timeout: LOAD_TIMEOUT });
+
+  // No app handles the scheme here, so the page keeps focus and the install link appears.
+  const number = new URL(url).pathname.split("/").pop();
+  const appLink = page.getByRole("link", { name: "Open in git-tree-compare" });
+  assert.equal(
+    await appLink.getAttribute("href"),
+    `git-tree-compare://open?repo=cli/cli&pr=${number}`,
+  );
+  await appLink.click();
+  const install = page.getByRole("link", { name: "Install git-tree-compare" });
+  await install.waitFor();
+  assert.equal(
+    await install.getAttribute("href"),
+    "https://github.com/tinwritescode/git-tree-compare#install",
+  );
 }
 
 async function checkOptionsPage({ context, worker }) {
