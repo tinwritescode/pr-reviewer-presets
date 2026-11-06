@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "PR Reviewer Presets",
+  "version": "0.1.0",
+  "description": "Ask your usual GitHub reviewers in one click, with presets saved per organization.",
+  "minimum_chrome_version": "120",
+  "permissions": ["storage"],
+  "host_permissions": ["https://api.github.com/*"],
+  "background": { "service_worker": "background.js" },
+  "options_ui": { "page": "options.html", "open_in_tab": true },
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
